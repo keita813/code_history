@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CodeHistory</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>CodeHistory</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <header>
+    <h1 class="header-logo">code history</h1>
+    <nav>
+      <ul class="header-icon">
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to "新規投稿"%>
+        </li>
+        <li>
+          <%= link_to "マイページ"%>
+        </li>
+        <li>
+          <%= link_to "about", home_about_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+        <% else %>
+        <li class="header-list">
+          <!-- ブロックでリンクにする -->
+          <%= link_to home_about_path,class: "link" do %>
+          <p>about</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "ユーザー登録", new_user_registration_path, class: "link" %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path, class: "link"%>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  <%= yield %>
+  <footer>
+  </footer>
+</body>
 </html>

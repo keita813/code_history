@@ -1,2 +1,12 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="top-main">
+	<div class="top-container">
+		<p>コードメモサイト</p>
+		<h1>code history</h1>
+		<h2>復習してより理解を深める</h2>
+		<p>自身の使用したコードを保存していつでも見返して学習しましょう</p>
+	</div>
+	<div class="top-sidebar">
+		<%= button_to "さぁ、始めよう",new_user_registration_path,method: :get,class: "start" %>
+	</div>
+</div>
+<!-- 投稿を表示する -->

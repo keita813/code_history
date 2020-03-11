@@ -1,2 +1,12 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+<div style="text-align: center;">
+	<h1>code history</h1>
+	<p style="margin-bottom: 50px">使い方、なぜ使って欲しいのか</p>
+	<% if user_signed_in? %>
+	<!-- 投稿一覧に遷移 -->
+	<%= button_to "ユーザー登録して始める",new_user_session_path,method: :get,class: "start" %>
+	<% else %>
+	<%= button_to "ユーザー登録して始める",new_user_registration_path,method: :get,class: "start" %>
+	<% end %>
+</div>
+</div>
+
