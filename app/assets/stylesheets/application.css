@@ -76,3 +76,14 @@
  .start:hover{
  	opacity: 1;
  }
+ /*新規投稿画面*/
+
+.title-form {
+	font-size: 13px;
+	width: 80%;
+	height: 50px;
+}
+.body-form {
+	width: 80%;
+	height: 500px;
+}

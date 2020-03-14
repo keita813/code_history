@@ -1,0 +1,12 @@
+<h2>新規投稿</h2>
+<%= form_for(@code) do |f| %>
+<div>
+	<%= f.text_field :title, placeholder: "タイトル", class: "title-form" %>
+</div>
+<div>
+	<%= f.text_area :body, placeholder: "内容", class: "body-form" %>
+</div>
+<div>
+	<%= f.submit "投稿する" %>
+</div>
+<% end %>
