@@ -1,7 +1,7 @@
 class CodesController < ApplicationController
 	
 	def index
-		@codes = Code.all
+		@codes = Code.all.order(created_at: :desc)
 	end
 
 	def new

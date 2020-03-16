@@ -1,13 +1,25 @@
 <div><h2>投稿一覧</h2>
 
-	<tbody>
-		<% @codes.each do |code| %>
-		<tr>
-			<td>
-				<%= link_to code.title, code_path(code) %>
-			</td>
-		</tr>
-		
-		<% end %>
-	</tbody>
+	
+	<table>
+		<tbody>
+			<% @codes.each do |code| %>
+			<tr>
+				<td>
+					<%= link_to code.title, code_path(code) %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- link_toでユーザーページに遷移 -->
+					<%= code.user.name %>
+				</td>
+				<td>
+					<%= code.created_at.strftime('%Y/%m/%d') %>
+				</td>
+			</tr>
+
+			<% end %>
+		</tbody>
+	</table>
 </div>
