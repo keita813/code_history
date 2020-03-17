@@ -19,7 +19,7 @@ class CodesController < ApplicationController
 	end
 
 	def show
-		
+		@code = Code.find(params[:id])
 	end
 	def edit
 		
@@ -28,7 +28,9 @@ class CodesController < ApplicationController
 		
 	end
 	def destroy
-		
+		code = Code.find(params[:id])
+		code.destroy
+		redirect_to codes_path
 	end
 	private
 	def code_params
