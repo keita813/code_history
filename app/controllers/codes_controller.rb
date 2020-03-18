@@ -22,6 +22,7 @@ class CodesController < ApplicationController
 		@code = Code.find(params[:id])
 	end
 	def edit
+		@code = Code.find(params[:id])
 		
 	end
 	def update
