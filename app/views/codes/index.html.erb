@@ -12,7 +12,7 @@
 			<tr>
 				<td>
 					<!-- link_toでユーザーページに遷移 -->
-					<%= code.user.name %>
+					<%= link_to code.user.name, user_path(code.user_id) %>
 				</td>
 				<td>
 					<%= code.created_at.strftime('%Y/%m/%d') %>

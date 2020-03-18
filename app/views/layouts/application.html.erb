@@ -19,7 +19,7 @@
           <%= link_to "新規投稿",new_code_path %>
         </li>
         <li>
-          <%= link_to "マイページ"%>
+          <%= link_to "マイページ", user_path(current_user.id) %>
         </li>
         <li>
           <%= link_to "about", home_about_path %>

@@ -1,0 +1,24 @@
+<div>
+	<h2><%= @user.name %></h2>
+	<div><%= @user.introduction %></div>
+	<% if @user == current_user %>
+	<div><%= link_to "プロフィールの編集" %></div>
+	<% end %>
+</div>
+<div>
+	<table>
+		<tbody>
+			<% @codes.each do |code| %>
+			<tr>
+				<td>
+					<h2><%= link_to code.title, code_path(code)%></h2>
+				</td>
+			</tr>
+			<tr>
+				<td><%= link_to @user.name, user_path(@user) %></td>
+				<td><%= code.created_at.strftime('%Y/%m/%d')%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
