@@ -21,7 +21,7 @@
 	<tbody>
 		<tr>
 			<td>
-				<%= link_to "編集"%>
+				<%= link_to "編集", edit_code_path(@code) %>
 			</td>
 			<td>
 				<%= link_to "削除",code_path(@code.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>

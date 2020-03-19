@@ -1,0 +1,14 @@
+<h2>投稿編集</h2>
+  <div>
+  	<%= form_for(@code) do |f| %>
+  	<div>
+  	<%= f.text_field :title, class: "title-form" %>
+  </div>
+  <div>
+  	<%= f.text_area :body, class: "body-form" %>
+  </div>
+  <div>
+  	<%= f.submit "編集" %>
+  </div>
+  	<% end %>
+  </div>
