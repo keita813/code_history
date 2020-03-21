@@ -1,0 +1,8 @@
+<div>
+	<h2>本当に退会しますか？</h2>
+	<p>退会られるとコードの見返しができなくなります。<br>
+	退会される場合は、『退会する』をクリックして下さい。</p>
+	<%= link_to "退会しない", user_path(current_user.id)%>
+	<%= link_to "退会する", user_path(current_user.id), method: :delete, "data-confirm" => "本当に退会しますか？"%>
+
+</div>

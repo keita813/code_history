@@ -1,0 +1,19 @@
+
+<div>
+	<h2>
+		<i class="fas fa-user">プロフィール編集</i>
+	</h2>
+	<%= form_for(@user) do |f| %>
+	<label>ユーザー名</label>
+	<%= f.text_field :name %>
+	<br>
+	<label>自己紹介</label>
+	<%= f.text_area :introduction %>
+	<br>
+	<label>プロフィール画像</label>
+	<%= f.attachment_field :profile_image %>
+	<br>
+	<%= f.submit "保存する"%>
+	<% end %>
+	<%= link_to "退会する", users_withdraw_path %>
+</div>

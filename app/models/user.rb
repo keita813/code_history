@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :codes, dependent: :destroy
 
-  attachment :profiel_image
+  attachment :profile_image
 end
