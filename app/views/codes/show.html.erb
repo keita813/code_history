@@ -9,6 +9,23 @@
 					<%= @code.user.name%>
 				</td>
 				<td>
+					<% if @code.favorited_by?(current_user) %>
+					
+					<%= link_to code_favorites_path(@code.id), method: :delete do %>
+					<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+					<%= @code.favorites.count %>
+					<% end %>
+					
+					<% else %>
+					
+					<%= link_to code_favorites_path(@code.id), method: :post do %>
+					<i class="fa fa-heart-o" aria-hidden="true"></i>
+					<%= @code.favorites.count %>
+					<% end %>
+					
+					<% end %>
+				</td>
+				<td>
 					<%= @code.created_at.strftime('%Y/%m/%d') %>
 				</td>
 			</tr>
