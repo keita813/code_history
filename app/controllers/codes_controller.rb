@@ -38,10 +38,15 @@ class CodesController < ApplicationController
 		end
 
 	end
+
 	def destroy
 		code = Code.find(params[:id])
 		code.destroy
 		redirect_to codes_path
+	end
+	# routes.rbの'codes#search'の対応するメソッド
+	def search
+		@codes = Code.search(params[:search])
 	end
 
 	private

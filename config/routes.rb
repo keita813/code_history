@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'home/about'
   get 'users/withdraw'
+  # 検索後のページ
+  get 'codes/search', to: 'codes#search'
   devise_for :users
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :codes do
