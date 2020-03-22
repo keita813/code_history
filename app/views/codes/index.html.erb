@@ -5,6 +5,11 @@
 			<% @codes.each do |code| %>
 			<tr>
 				<td>
+					<%= attachment_image_tag code.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<%= link_to code.title, code_path(code) %>
 				</td>
 			</tr>
