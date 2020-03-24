@@ -32,7 +32,7 @@
 		</tbody>
 	</table>
 	<div>
-		<%= @code.body %>
+		<%= markdown(@code.body).html_safe %>
 	</div>
 	<% if @code.user == current_user %>
 	<tbody>
