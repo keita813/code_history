@@ -1,0 +1,17 @@
+<div>
+  <h2>フォロー</h2>
+  <table>
+    <tbody>
+      <% @users.each do |user|%>
+      <tr>
+        <td>
+          <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+        </td>
+        <td>
+          <%= link_to user.name, user_path(user)%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
