@@ -11,7 +11,7 @@
 					<% @codes.each do |code| %>
 					<tr>
 						<td>
-							<%= attachment_image_tag code.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+							<%= attachment_image_tag code.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60" %>
 						</td>
 						<td>
 							<h4>

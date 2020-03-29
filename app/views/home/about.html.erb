@@ -1,12 +1,23 @@
-<div style="text-align: center;">
-	<h2>code history</h2>
-	<p style="margin-bottom: 50px">使い方、なぜ使って欲しいのか</p>
+<div class="about-text">
+	<h2>code historyとは</h2>
+	<p class="about-explanation">
+		コードを書く皆様が学習で使用したコード、仕事で使用したコードなど<br>
+		なかなか使用する頻度が少ないに自信が使用したコードを見返すサイト<br>
+		になります。<br>
+		<br>
+		学習を始めだした時、コードを見返し理解することで自身のスキルアッ<br>
+		プにも繋がります。<br>
+		さらに共有することによってインプットとアウトプットによりより理解<br>
+		を深めていく<br>
+		<br>
+		他者が見ても分かりやすく投稿をして頂けるとそれを見たユーザーのス<br>キルアップにも繋がります。<br>
+		切磋琢磨してプログラマーとして成長できる場に出来たらと思っています。
+	</p>
 	<% if user_signed_in? %>
 	<!-- 投稿一覧に遷移 -->
 	<%= button_to "ユーザー登録して始める",new_user_session_path,method: :get,class: "start" %>
 	<% else %>
 	<%= button_to "ユーザー登録して始める",new_user_registration_path,method: :get,class: "start" %>
 	<% end %>
-</div>
 </div>
 
