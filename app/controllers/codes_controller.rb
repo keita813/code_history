@@ -2,7 +2,7 @@ class CodesController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index
-		@codes = Code.all.order(created_at: :desc)
+		@codes = Code.page(params[:page]).reverse_order
 	end
 
 	def new

@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row">
 		<div class="col-xs-3">
@@ -69,6 +68,9 @@
 					<% end %>
 				</tbody>
 			</table>
+			<div class="form-error">
+			<%= paginate @codes, class: "paginate" %>
+		</div>
 		</div>
 	</div>
 </div>
