@@ -22,7 +22,7 @@ module ApplicationHelper
 				lang = language
 			end
 
-			CodeRay.scan(code, lang).div(line_numbers: :table)
+			CodeRay.scan(code, lang).div
 		end
 	end
 

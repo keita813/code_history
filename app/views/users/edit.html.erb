@@ -1,19 +1,39 @@
-
-<div>
-	<h2>
-		<i class="fas fa-user">プロフィール編集</i>
-	</h2>
-	<%= form_for(@user) do |f| %>
-	<label>ユーザー名</label>
-	<%= f.text_field :name %>
-	<br>
-	<label>自己紹介</label>
-	<%= f.text_area :introduction %>
-	<br>
-	<label>プロフィール画像</label>
-	<%= f.attachment_field :profile_image %>
-	<br>
-	<%= f.submit "保存する"%>
+<div class="container">
+	<% @user.errors.full_messages.each do |message| %>
+	<div class="form-error">
+		<%= message %>
+	</div>
 	<% end %>
-	<%= link_to "退会する", users_withdraw_path %>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>
+				<i class="fas fa-user">プロフィール編集</i>
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-2">
+
+			<%= form_for(@user) do |f| %>
+			<div class="form-group">
+				<%= f.label "ユーザー名" %>
+				<%= f.text_field :name,class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label "自己紹介" %>
+				<%= f.text_area :introduction, class: "form" %>
+			</div>
+			<div class="form-group">
+				<%= f.label "プロフィール画像" %>
+				<%= f.attachment_field :profile_image %>
+			</div>
+			<div class="bottom">
+				<%= f.submit "保存する", class: "btn btn-default"%>
+				<% end %>
+				<div class="bottom">
+					<%= link_to "退会する", users_withdraw_path %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

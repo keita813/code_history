@@ -1,28 +1,36 @@
-<h2>ユーザー新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+
+  <h2 class="register">ユーザー新規登録</h2>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
 
-        <div class="field">
-          <%= f.label "ユーザー名"%>
-          <%= f.text_field :name,autofocus: true %>
-        </div>
-     
-        <div class="field">
-          <%= f.label "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-     
-            <div class="field">
-          <%= f.label "パスワード" %>
-          <%= f.password_field :password,placeholder: "6文字以上", autocomplete: "new-password" %>
-        </div>
+      <div class="form-group">
+        <%= f.label "ユーザー名" %>
+        <%= f.text_field :name,autofocus: true, placeholder: "3文字以上20文字以内", class: "form-control" %>
+      </div>
 
+      <div class="form-group">
+        <%= f.label "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "パスワード" %>
+        <%= f.password_field :password, placeholder: "6文字以上", autocomplete: "new-password", class: "form-control" %>
+      </div>
+
+      <div class="bottom">
         <div class="actions">
-          <%= f.submit "登録" %>
+          <%= f.submit "登録", class: "btn btn-primary"%>
         </div>
         <% end %>
 
         <p>登録済みの方は、<%= link_to "こちら",new_user_session_path %></p>
-
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,29 @@
-<h2>新規投稿</h2>
-<%= form_for(@code) do |f| %>
-<div>
-	<%= f.text_field :title, placeholder: "タイトル", class: "title-form" %>
+<div class="container">
+	<% @code.errors.full_messages.each do |message| %>
+	<div class="form-error">
+		<%= message %>
+	</div>
+	<% end %>
+	<div class="row">
+		<div class="col-xs-3 col-xs-offset-1">
+			<h2>新規投稿</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<%= form_for(@code) do |f| %>
+			<div class="form-content">
+				<div>
+					<%= f.text_field :title, placeholder: "タイトルは５文字以上で記入してください", class: "form-control" %>
+				</div>
+				<div>
+					<%= f.text_area :body, placeholder: "内容を記入してください", class: "body-form" %>
+				</div>
+				<div class="bottom">
+					<%= f.submit "投稿する", class: "btn btn-default" %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
 </div>
-<div>
-	<%= f.text_area :body, placeholder: "内容", class: "body-form" %>
-</div>
-<div>
-	<%= f.submit "投稿する" %>
-</div>
-<% end %>

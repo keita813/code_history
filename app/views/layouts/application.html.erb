@@ -18,44 +18,52 @@
       <% else %>
       <%= link_to "code history", root_path, class: "link" %></h1>
       <% end %>
-    
-    <nav>
-      <ul class="header-icon">
-        <li>
-          <%= form_tag codes_search_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag '検索', :name =>nil %>
+
+      <nav>
+        <ul class="header-icon">
+          <li>
+
+            <%= form_tag codes_search_path, :method => 'get',class: "form-inline my-2 my-lg-0" do %>
+            <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", :placeholder => "検索ワード" %>
+            <button class="btn btn-default" type="submit">検索</button>
+
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to "新規投稿",new_code_path, class: "link" %>
+          </li>
+          <li>
+            <%= link_to "マイページ", user_path(current_user.id), class: "link" %>
+          </li>
+          <li>
+            <%= link_to "about", home_about_path, class: "link" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %>
+          </li>
+          <% else %>
+          <li class="header-list">
+            <%= link_to "about", home_about_path, class: "link" %>
+          </li>
+          <li>
+            <%= link_to "ユーザー登録", new_user_registration_path, class: "link" %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_user_session_path, class: "link"%>
+          </li>
           <% end %>
-        </li>
-        <% if user_signed_in? %>
-        <li>
-          <%= link_to "新規投稿",new_code_path, class: "link" %>
-        </li>
-        <li>
-          <%= link_to "マイページ", user_path(current_user.id), class: "link" %>
-        </li>
-        <li>
-          <%= link_to "about", home_about_path, class: "link" %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %>
-        </li>
-        <% else %>
-        <li class="header-list">
-          <%= link_to "about", home_about_path, class: "link" %>
-        </li>
-        <li>
-          <%= link_to "ユーザー登録", new_user_registration_path, class: "link" %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path, class: "link"%>
-        </li>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
-  <%= yield %>
-  <footer>
-  </footer>
-</body>
-</html>
+        </ul>
+      </nav>
+    </header>
+    <% if flash[:notice] %>
+    <p class="bg-warning">
+      <%= flash[:notice] %>
+    </p>
+    <% end %>
+    <%= yield %>
+    <footer>
+      <p class="footer-text">© 2020 Keita</p>
+    </footer>
+  </body>
+  </html>

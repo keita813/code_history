@@ -1,4 +1,5 @@
 class CodesController < ApplicationController
+	before_action :authenticate_user!
 	
 	def index
 		@codes = Code.all.order(created_at: :desc)
@@ -12,7 +13,8 @@ class CodesController < ApplicationController
 		@code = Code.new(code_params)
 		@code.user_id = current_user.id
 		if @code.save
-			redirect_to codes_path
+			flash[:notice] ="投稿が出来ました。"
+			redirect_to code_path(@code.id)
 		else
 			render :new
 		end
@@ -20,6 +22,7 @@ class CodesController < ApplicationController
 
 	def show
 		@code = Code.find(params[:id])
+		@user = @code.user
 	end
 
 	def edit
@@ -32,6 +35,7 @@ class CodesController < ApplicationController
 	def update
 		@code = Code.find(params[:id])
 		if @code.update(code_params)
+			flash[:notice] ="投稿の編集が出来ました。"
 			redirect_to code_path(@code)
 		else
 			render "edit"
@@ -42,6 +46,7 @@ class CodesController < ApplicationController
 	def destroy
 		code = Code.find(params[:id])
 		code.destroy
+		flash[:notice] ="投稿の削除が出来ました。"
 		redirect_to codes_path
 	end
 	# routes.rbの'codes#search'の対応するメソッド

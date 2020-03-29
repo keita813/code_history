@@ -1,50 +1,74 @@
-<div>
-	<div>
-		<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
-	</div>
-	<h2><%= @user.name %></h2>
-	<div><%= @user.introduction %></div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					フォロー数
-					<%= link_to @user.follower.count, user_follows_path(@user) %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					フォロワー数
-					<%= link_to @user.followed.count, user_followers_path(@user) %>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<% if @user == current_user %>
-	<div><%= link_to "プロフィールの編集", edit_user_path(@user) %></div>
-	<% else %>
-	<!-- フォローするボタン -->
-	<% if current_user.following?(@user) %>
-	<%= link_to 'フォローを外す', user_relationships_path(@user.id), method: :delete %>
-	<% else %>
-	<%= link_to 'フォロー', user_relationships_path(@user.id), method: :POST%>
-	<% end %>
-	<% end %>
-</div>
-<div>
-	<table>
-		<tbody>
-			<% @codes.each do |code| %>
-			<tr>
-				<td>
-					<h2><%= link_to code.title, code_path(code)%></h2>
-				</td>
-			</tr>
-			<tr>
-				<td><%= link_to @user.name, user_path(@user) %></td>
-				<td><%= code.created_at.strftime('%Y/%m/%d')%></td>
-			</tr>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<div>
+				<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+			</div>
+			<h2><%= @user.name %></h2>
+			<div><%= @user.introduction %></div>
+			<br>
+			
+			<p>
+				フォロー数
+				<%= link_to @user.follower.count, user_follows_path(@user) %>
+			</p>
+
+			<p>
+				フォロワー数
+				<%= link_to @user.followed.count, user_followers_path(@user) %>
+
+			</p>
+
+			<% if @user == current_user %>
+			<div><%= link_to "プロフィールの編集", edit_user_path(@user), class: "btn btn-default btn-sm btn-block" %></div>
+			<% else %>
+			<!-- フォローするボタン -->
+			<% if current_user.following?(@user) %>
+			<%= link_to 'フォローを外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-danger btn-sm btn-block" %>
+			<% else %>
+			<%= link_to 'フォロー', user_relationships_path(@user.id), method: :POST, class: "btn btn-success btn-sm btn-block"%>
 			<% end %>
-		</tbody>
-	</table>
+			<% end %>
+		</div>
+		<div class="col-xs-7 col-xs-offset-2">
+			<table>
+				<tbody>
+					<% @codes.each do |code| %>
+					<tr>
+						<td>
+							<h2><%= link_to code.title, code_path(code)%></h2>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							by
+							<%= link_to @user.name, user_path(@user) %>
+
+						</td>
+						<td class="list">
+							<!-- いいね機能 -->
+							<% if code.favorited_by?(current_user) %>
+
+							<%= link_to code_favorites_path(code.id), method: :delete do %>
+							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+							<%= code.favorites.count %>
+							<% end %>
+
+							<% else %>
+
+							<%= link_to code_favorites_path(code.id), method: :post do %>
+							<i class="fa fa-heart-o" aria-hidden="true"></i>
+							<%= code.favorites.count %>
+							<% end %>
+
+							<% end %>
+						</td>
+						<td><%= code.created_at.strftime('%Y/%m/%d')%></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

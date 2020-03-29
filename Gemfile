@@ -70,6 +70,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
+gem 'bootstrap-sass', '~> 3.3.7'
 
 gem 'dotenv-rails'
 group :production do
