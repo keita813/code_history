@@ -31,46 +31,47 @@
 			<% end %>
 		</div>
 		<div class="col-xs-7 col-xs-offset-2">
-			<table>
+			<table class="table table-hover">
 				<tbody>
 					<% @codes.each do |code| %>
 					<tr>
 						<td>
-							<h2><%= link_to code.title, code_path(code)%></h2>
-						</td>
-					</tr>
-					<tr>
-						<td>
+							<h4>
+								<%= link_to code.title, code_path(code)%>
+
+							</h4>
+
 							by
 							<%= link_to @user.name, user_path(@user) %>
 
+							<span class="title-list">
+								<!-- いいね機能 -->
+								<% if code.favorited_by?(current_user) %>
+
+								<%= link_to code_favorites_path(code.id), method: :delete do %>
+								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+								<%= code.favorites.count %>
+								<% end %>
+
+								<% else %>
+
+								<%= link_to code_favorites_path(code.id), method: :post do %>
+								<i class="fa fa-heart-o" aria-hidden="true"></i>
+								<%= code.favorites.count %>
+								<% end %>
+
+								<% end %>
+
+								<%= code.created_at.strftime('%Y/%m/%d')%>
+							</span>
 						</td>
-						<td class="list">
-							<!-- いいね機能 -->
-							<% if code.favorited_by?(current_user) %>
-
-							<%= link_to code_favorites_path(code.id), method: :delete do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-							<%= code.favorites.count %>
-							<% end %>
-
-							<% else %>
-
-							<%= link_to code_favorites_path(code.id), method: :post do %>
-							<i class="fa fa-heart-o" aria-hidden="true"></i>
-							<%= code.favorites.count %>
-							<% end %>
-
-							<% end %>
-						</td>
-						<td><%= code.created_at.strftime('%Y/%m/%d')%></td>
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
 			<div class="form-error">
-			<%= paginate @codes, class: "paginate" %>
-		</div>
+				<%= paginate @codes, class: "paginate" %>
+			</div>
 		</div>
 	</div>
 </div>
