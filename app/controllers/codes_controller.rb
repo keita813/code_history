@@ -47,7 +47,7 @@ class CodesController < ApplicationController
 		code = Code.find(params[:id])
 		code.destroy
 		flash[:notice] ="投稿の削除が出来ました。"
-		redirect_to codes_path
+		redirect_to user_path(code.user_id)
 	end
 	# routes.rbの'codes#search'の対応するメソッド
 	def search

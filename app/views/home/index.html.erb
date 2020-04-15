@@ -1,15 +1,46 @@
-
 <div class="container-fluid">
-	<div class="top-main">
-	<div class="top-container">
-		<p>コードメモサイト</p>
-		<h1>code history</h1>
-		<h2>復習してより理解を深める</h2>
-		<p>自身の使用したコードを保存していつでも見返して学習しましょう</p>
+	<div class="row">
+		<div class="top-main">
+			<div class="top-container">
+				<p>コードメモサイト</p>
+				<h1>code history</h1>
+				<h2>復習してより理解を深める</h2>
+				<p>自身の使用したコードを保存していつでも見返して学習しましょう</p>
+			</div>
+			<div class="top-sidebar">
+				<%= button_to "さぁ、始めよう",new_user_registration_path,method: :get,class: "start" %>
+			</div>
+		</div>
 	</div>
-	<div class="top-sidebar">
-		<%= button_to "さぁ、始めよう",new_user_registration_path,method: :get,class: "start" %>
+	<!-- 投稿を表示する -->
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<table class="table table-hover">
+				<tbody>
+					<% @codes.each do |code| %>
+					<tr>
+						<td>
+							<%= attachment_image_tag code.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60" %>
+						</td>
+						<td>
+							<h4>
+								<%= link_to code.title, code_path(code) %>
+							</h4>
+							by
+							<%= link_to code.user.name, user_path(code.user_id) %>
+							<span class="title-list">
+								<!-- コードの更新日 -->
+								<%= code.created_at.strftime('%Y/%m/%d') %>
+							</span>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
+	<div class="form-error">
+		<%= paginate @codes, class: "paginate" %>
+	</div>
+	
 </div>
-</div>
-<!-- 投稿を表示する -->

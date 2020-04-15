@@ -29,11 +29,11 @@
  }
  /*header*/
  header {
+ 	// background-color: #3e3e3e;
  	height: 80px;
  	margin: 0 auto;
  	line-height: 80px;
  	border-bottom: 1px solid #000;
- 	margin-bottom: 30px;
  }
  .header-logo {
  	font-size: 35px;
@@ -88,6 +88,7 @@
  	background-image: image-url("home-top.jpg");
  	background-size: cover;
  	color: white;
+ 	margin-bottom: 100px;
  }
  .top-sidebar {
  	margin-top: 100px;
