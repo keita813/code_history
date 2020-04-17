@@ -72,6 +72,7 @@ gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
 gem 'kaminari','~> 1.1.1'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
 
 gem 'dotenv-rails'
 group :production do

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def show
   	@user = User.find(params[:id])
+    # ページネーション
   	@codes = @user.codes.page(params[:page]).reverse_order
   end
 

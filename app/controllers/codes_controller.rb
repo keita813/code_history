@@ -51,7 +51,7 @@ class CodesController < ApplicationController
 	end
 	# routes.rbの'codes#search'の対応するメソッド
 	def search
-		@codes = Code.search(params[:search])
+		@codes = Code.search(params[:search]).reverse_order
 	end
 
 	private

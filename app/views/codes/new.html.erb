@@ -1,9 +1,11 @@
 <div class="container">
-	<% @code.errors.full_messages.each do |message| %>
-	<div class="form-error">
-		<%= message %>
+	<div class="row">
+		<% @code.errors.full_messages.each do |message| %>
+		<div class="form-error">
+			<%= message %>
+		</div>
+		<% end %>
 	</div>
-	<% end %>
 	<div class="row">
 		<div class="col-xs-3 col-xs-offset-1">
 			<h2>新規投稿</h2>

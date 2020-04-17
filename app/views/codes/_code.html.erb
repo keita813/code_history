@@ -1,0 +1,31 @@
+<td>
+	<%= attachment_image_tag code.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60" %>
+</td>
+<td>
+	<h4>
+		<%= link_to code.title, code_path(code) %>
+	</h4>
+	by
+	<%= link_to code.user.name, user_path(code.user_id) %>
+
+	<span class="title-list">
+		<!-- いいね機能 -->
+		<% if code.favorited_by?(current_user) %>
+
+		<%= link_to code_favorites_path(code.id), method: :delete, remote: true do %>
+		<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+		<%= code.favorites.count %>
+		<% end %>
+
+		<% else %>
+
+		<%= link_to code_favorites_path(code.id), method: :post, remote: true do %>
+		<i class="fa fa-heart-o" aria-hidden="true"></i>
+		<%= code.favorites.count %>
+		<% end %>
+
+		<% end %>
+		<!-- コードの更新日 -->
+		<%= code.created_at.strftime('%Y/%m/%d') %>
+	</span>
+</td>
