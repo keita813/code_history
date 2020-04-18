@@ -9,9 +9,28 @@
 			<table class="table table-hover">
 				<tbody>
 					<% @codes.each do |code| %>
-					<!-- 非同期のいいね -->
-					<tr class="code_<%= code.id %>">
-						<%= render 'code', code: code %>
+					<tr>
+						<td>
+							<%= attachment_image_tag code.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60" %>
+						</td>
+						<td>
+							<h4>
+								<%= link_to code.title, code_path(code) %>
+							</h4>
+							by
+							<%= link_to code.user.name, user_path(code.user_id) %>
+
+							<span class="title-list">
+								<span class="code_<%= code.id%>">
+									<!-- いいね機能 -->
+									<%= render 'code', code: code %>
+								</span>
+								<span>
+									<!-- コードの更新日 -->
+									<%= code.created_at.strftime('%Y/%m/%d') %>
+								</span>
+							</span>
+						</td>
 					</tr>
 					<% end %>
 				</tbody>
