@@ -144,6 +144,7 @@
  	padding:6px 12px;
  	font-size: 14px;
  }
+
 // 投稿詳細
 .sh-header {
 	margin-bottom: 40px;
@@ -178,6 +179,20 @@
 .bg-warning {
 	text-align: center;
 }
+
+.notice-message {
+	text-align: center;
+}
  .mypage {
  	margin-top: 50px;
+ }
+
+ //code.index
+ .kaminari-icon {
+ 	text-align: center;
+ }
+
+ // error-message
+ .form-error {
+ 	text-align: center;
  }
