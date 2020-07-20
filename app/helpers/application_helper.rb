@@ -3,7 +3,7 @@ module ApplicationHelper
 	require "coderay"
 
 	class HTMLwithCoderay < Redcarpet::Render::HTML
-
+		# 言語の指定とカスタマイズ
 		def block_code(code, language)
 			language = language.split(':')[0]
 
@@ -22,7 +22,7 @@ module ApplicationHelper
 				lang = language
 			end
 
-			CodeRay.scan(code, lang).div
+			CodeRay.scan(code, language || 'md').div
 		end
 	end
 
