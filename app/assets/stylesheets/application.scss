@@ -19,15 +19,15 @@
  @import "bootstrap";
 
  * {
- 	margin: 0;
- 	padding: 0;
+ 	margin: 0px;
+ 	padding: 0px;
  	box-sizing: border-box;
  }
  .clearfix::after {
- 	content: "";
- 	display: block;
- 	clear: both;
- }
+  	content: "";
+  	display: block;
+  	clear: both;
+  }
 
  h2 {
  	margin-bottom: 50px;
@@ -66,6 +66,7 @@
  }
  body {
  	min-height: 100vh;
+ 	padding: 0;
  	position: relative;
  	padding-bottom: 150px;
  }
@@ -82,13 +83,12 @@
 
  /*home.トップページ*/
  .top-container {
- 	margin-left:400px;
- 	text-align: left;
- 	float: left;
+ 	margin: 0 auto;
+ 	text-align: center;
+ 	letter-spacing: 2px;
  }
 
  .top-main {
- 	height: 540px;
  	padding: 200px 0 100px 0;
  	background-image: image-url("home-top.jpg");
  	background-size: cover;
@@ -97,8 +97,6 @@
  }
  .top-sidebar {
  	margin-top: 100px;
- 	margin-left: 200px;
- 	float: left;
  }
  /*aboutページと共有*/
  .start {
@@ -183,9 +181,9 @@
 .notice-message {
 	text-align: center;
 }
- .mypage {
- 	margin-top: 50px;
- }
+.mypage {
+	margin-top: 50px;
+}
 
  //code.index
  .kaminari-icon {
